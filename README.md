@@ -1,28 +1,24 @@
-# BloonBot
-Original: https://github.com/RavingSmurfGB/Py_AutoBloons  
-This is my version of the bot made by RavingSmurfGB.  
-The original didn't seem to work so I made my own.  
+## Como funciona
+Esse script vai selecionar Dark Castle e fazer ele no easy, coletando levels e itens.
 
-## How It Works
-This program will select the map Dark Castle and beat it on easy difficulty while collecting any levels and event items.  
-It will use the Hero OBYN (Which will be selected auto if not), a submarine and a ninja monkey to beat the game.   
+Vai usar OBYN, um sub e um ninja. Além disso, vai spammar qualquer torre configurada para ganhar exp dela.
 
-## In-Game Requirements
+## Requisitos
 Map: Dark Castle  
 
-Keybinds that need to be changed:  
-Keybind         | Key
+Atalhos que utiliza:
+Atalho         | Tecla
 --------------- | -----
 Upgrade path 1	| <ul>1 
 Upgrade path 2	|	<ul>2 
 Upgrade path 3	|	<ul>3  
 
 Upgrades:  
-Monkey        | Upgrade
+Macaco        | Upgrade
 ------------- | -------------
-Submarine     | <ul>2-0-4
+Sub     | <ul>2-0-4
 Ninja         | <ul>4-0-1
 
-## Compatibility
-#### Resolutions supported:  
+## Compatibilidade
+#### Resolução testada:
 * 1920x1080  
