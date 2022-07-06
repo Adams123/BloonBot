@@ -1,0 +1,7 @@
+pyautogui
+keyboard
+numpy
+colorama
+pydirectinput
+pillow
+opencv-python
