@@ -53,9 +53,9 @@ def Exit_Game():
 
     print(f'{Fore.CYAN}Game ended. Going back to homescreen...')
     pyautogui.click(x=960, y=910)
-    time.sleep(2)
+    sleep(2)
     pyautogui.click(x=790, y=850)
-    time.sleep(6)
+    sleep(6)
     print(f'{Fore.CYAN}Back in homescreen. Checking for event notification...')
     sleep(2)
     for x in range(0, 4):  # checking for menu screen
@@ -68,6 +68,7 @@ def Exit_Game():
             sleep(3)
 
 #pyautogui.mouseInfo()
+sleep(5)
 while True:
     Start_Select_Map()
     Main_Game()
