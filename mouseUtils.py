@@ -8,18 +8,16 @@ def click(location):
     loc = button_positions[location]
     pyautogui.moveTo(loc)
     pyautogui.click(loc)
-    sleep(0.5)
-
-#
+    sleep(0.2)
 
 def move_mouse(location):
     pyautogui.moveTo(location)
-    sleep(0.5)
+    sleep(0.2)
 
 
 def press_key(key):
     pydirectinput.press(key)
-    sleep(0.5)
+    sleep(0.2)
 
 def scrollUp():
     subLoc = pyautogui.locateOnScreen("pictures\\monkeys\\SUBMARINE.png", confidence=CONFIDENCE)

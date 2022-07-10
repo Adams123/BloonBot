@@ -14,6 +14,10 @@ keyPaths = {
 
 towerUpgradeLevels = {}
 
+def reset_towers_levels():
+    global towerUpgradeLevels
+    towerUpgradeLevels = {}
+
 def place_tower(tower, location):
 
     while checkUntilMonkeyIsReady(tower) is False:
@@ -27,6 +31,23 @@ def place_tower(tower, location):
     pyautogui.click()
     print(f'{Fore.CYAN}' + tower + ' placed.')
     sleep(0.5)
+
+def levelup_tower(tower):
+    gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
+    levelup = 0
+    while gameEnded == None:
+        Level_Up_Check(1)
+        if(checkUntilMonkeyIsReady(tower) != None):
+            Level_Up_Check(1)
+            print(f'{Fore.CYAN}Placing ' + tower + '...')
+            move_mouse(levelup_locations[levelup])
+            print(f'{Fore.CYAN}Clicking ' + monkeys[tower] + '...')
+            pyautogui.click()
+            print(f'{Fore.CYAN}' + tower + ' placed.')
+            sleep(0.5)
+            levelup=levelup+1
+        print('Level not finished!')
+        gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
 
 
 def upgrade_tower(path, location):
@@ -46,7 +67,7 @@ def upgrade_tower(path, location):
 
     print(f'{Fore.CYAN}Upgrading tower path ' + path + '...')
     press_key(path)
-    sleep(1)
+    sleep(0.2)
     press_key("esc")
     print(f'{Fore.CYAN}Path ' + path + ' upgraded.')
     sleep(0.5)
@@ -62,7 +83,34 @@ def checkUntilUpgradeIsReady(key, towerLocation, level):
     upPath = keyPaths[key]
     path = f"pictures\\upgrades\\{tower}\\{upPath}\\{level}.png"
     return pyautogui.locateOnScreen(path, confidence=CONFIDENCE) != None
-        
+
+def sell_tower(towerLocation):
+    click(towerLocation)
+    press_key("backspace")
+
+def findAndClick(image):
+    print("PROCURANDO" + image)
+    location = pyautogui.locateOnScreen(image, confidence = CONFIDENCE)
+    print(location)
+    sleep(0.2)
+    pyautogui.click(location)
+
+def pick_hero(hero):
+    confirm_hero = "pictures\\heroes\\choose.png"
+    heroes_menu = "pictures\\heroes\\heroes_menu.png"
+    hero_location = ""
+    match hero:
+        case "OBYN":
+            hero_location = "pictures\\heroes\\obyn.png"
+        case "QUINCY":
+            hero_location = "pictures\\heroes\\quincy.png"
+    findAndClick(heroes_menu)
+    sleep(0.5)
+    findAndClick(hero_location)
+    sleep(0.5)
+    findAndClick(confirm_hero)
+    sleep(0.5)
+    findAndClick(return_button_path)
 
 def Level_Up_Check(seconds):
 
