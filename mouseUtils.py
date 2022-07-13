@@ -4,16 +4,20 @@ import pydirectinput
 import pyautogui
 from time import sleep
 
+def dragTo(location, duration=0.2,shouldSleep=True):
+    pyautogui.dragTo(location, duration=duration)
+    if(shouldSleep):
+        sleep(0.1)
+
 def click(location):
-    loc = button_positions[location]
-    pyautogui.moveTo(loc)
-    pyautogui.click(loc)
+    pyautogui.moveTo(location)
+    sleep(0.3)
+    pyautogui.click()
     sleep(0.2)
 
 def move_mouse(location):
     pyautogui.moveTo(location)
     sleep(0.2)
-
 
 def press_key(key):
     pydirectinput.press(key)

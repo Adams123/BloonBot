@@ -8,12 +8,17 @@ from colorama import Fore
 from mouseUtils import *
 from constants import * 
 from gameutils import * 
+from menus import selected_map
 
 colorama.init(autoreset=True)
 
 def start():
 
     print(f'{Fore.CYAN}Game started.')
+
+    global button_positions
+    button_positions.update(default_positions)
+    button_positions.update(selected_map_config[selected_map][0])
 
     place_tower("HERO", "HERO_LOCATION")
     
@@ -26,19 +31,19 @@ def start():
     upgrade_tower(',', "NINJA_LOCATION")
     upgrade_tower(',', "NINJA_LOCATION")
 
-    place_tower("SUBMARINE", "SUB_LOCATION_1")
-    upgrade_tower(",", "SUB_LOCATION_1")
-    upgrade_tower(",", "SUB_LOCATION_1")
-    upgrade_tower(".", "SUB_LOCATION_1")
-    upgrade_tower(".", "SUB_LOCATION_1")
+    place_tower("SUBMARINE", "SUBMARINE_LOCATION_1")
+    upgrade_tower(",", "SUBMARINE_LOCATION_1")
+    upgrade_tower(",", "SUBMARINE_LOCATION_1")
+    upgrade_tower(".", "SUBMARINE_LOCATION_1")
+    upgrade_tower(".", "SUBMARINE_LOCATION_1")
 
-    place_tower("SUBMARINE", "SUB_LOCATION_2")
-    upgrade_tower(",", "SUB_LOCATION_2")
-    upgrade_tower(",", "SUB_LOCATION_2")
-    upgrade_tower("/", "SUB_LOCATION_2")
-    upgrade_tower("/", "SUB_LOCATION_2")
-    upgrade_tower("/", "SUB_LOCATION_2")
-    upgrade_tower("/", "SUB_LOCATION_2")
+    place_tower("SUBMARINE", "SUBMARINE_LOCATION_2")
+    upgrade_tower(",", "SUBMARINE_LOCATION_2")
+    upgrade_tower(",", "SUBMARINE_LOCATION_2")
+    upgrade_tower("/", "SUBMARINE_LOCATION_2")
+    upgrade_tower("/", "SUBMARINE_LOCATION_2")
+    upgrade_tower("/", "SUBMARINE_LOCATION_2")
+    upgrade_tower("/", "SUBMARINE_LOCATION_2")
 
     upgrade_tower(',', "NINJA_LOCATION")
     upgrade_tower('/', "NINJA_LOCATION")
@@ -74,31 +79,31 @@ def start():
     upgrade_tower('.', "ALCHEMIST_LOCATION")
     upgrade_tower(',', "ALCHEMIST_LOCATION")
 
-    place_tower("BUCCANEER","BUCANEER_LOCATION")
-    upgrade_tower(',', "BUCANEER_LOCATION")
-    upgrade_tower(',', "BUCANEER_LOCATION")
-    upgrade_tower('.', "BUCANEER_LOCATION")
-    upgrade_tower('.', "BUCANEER_LOCATION")
-    upgrade_tower(',', "BUCANEER_LOCATION")
-    upgrade_tower(',', "BUCANEER_LOCATION")
+    place_tower("BUCCANEER","BUCCANEER_LOCATION")
+    upgrade_tower(',', "BUCCANEER_LOCATION")
+    upgrade_tower(',', "BUCCANEER_LOCATION")
+    upgrade_tower('.', "BUCCANEER_LOCATION")
+    upgrade_tower('.', "BUCCANEER_LOCATION")
+    upgrade_tower(',', "BUCCANEER_LOCATION")
+    upgrade_tower(',', "BUCCANEER_LOCATION")
 
-    place_tower("SUBMARINE", "SUB_LOCATION_3")
-    upgrade_tower(",", "SUB_LOCATION_3")
-    upgrade_tower(",", "SUB_LOCATION_3")
-    upgrade_tower("/", "SUB_LOCATION_3")
-    upgrade_tower("/", "SUB_LOCATION_3")
-    upgrade_tower("/", "SUB_LOCATION_3")
-    upgrade_tower("/", "SUB_LOCATION_3")
+    place_tower("SUBMARINE", "SUBMARINE_LOCATION_3")
+    upgrade_tower(",", "SUBMARINE_LOCATION_3")
+    upgrade_tower(",", "SUBMARINE_LOCATION_3")
+    upgrade_tower("/", "SUBMARINE_LOCATION_3")
+    upgrade_tower("/", "SUBMARINE_LOCATION_3")
+    upgrade_tower("/", "SUBMARINE_LOCATION_3")
+    upgrade_tower("/", "SUBMARINE_LOCATION_3")
 
-    upgrade_tower('.', "SUB_LOCATION_1")
+    upgrade_tower('.', "SUBMARINE_LOCATION_1")
 
-    place_tower("SUBMARINE", "SUB_LOCATION_4")
-    upgrade_tower(",", "SUB_LOCATION_4")
-    upgrade_tower(",", "SUB_LOCATION_4")
-    upgrade_tower("/", "SUB_LOCATION_4")
-    upgrade_tower("/", "SUB_LOCATION_4")
-    upgrade_tower("/", "SUB_LOCATION_4")
-    upgrade_tower("/", "SUB_LOCATION_4")
+    place_tower("SUBMARINE", "SUBMARINE_LOCATION_4")
+    upgrade_tower(",", "SUBMARINE_LOCATION_4")
+    upgrade_tower(",", "SUBMARINE_LOCATION_4")
+    upgrade_tower("/", "SUBMARINE_LOCATION_4")
+    upgrade_tower("/", "SUBMARINE_LOCATION_4")
+    upgrade_tower("/", "SUBMARINE_LOCATION_4")
+    upgrade_tower("/", "SUBMARINE_LOCATION_4")
 
     place_tower("SNIPER", "SNIPER_LOCATION")
     upgrade_tower(",", "SNIPER_LOCATION")

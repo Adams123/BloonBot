@@ -6,22 +6,23 @@ import colorama
 from colorama import Fore
 
 import dark_castle_easy
-import infernal_hard
+import infernal_hard as infernal
 
 from mouseUtils import *
 from constants import * 
-from gameutils import * 
+from gameutils import *
+from menus import selected_map
 
 
 from menus import Start_Select_Map, check_for_events
 
 colorama.init(autoreset=True)
 
-def Main_Game(map):
-    if(map == "DARK_CASTLE"):
+def Main_Game():
+    if(selected_map == "DARK_CASTLE"):
         dark_castle_easy.start()
-    elif(map == "INFERNAL_HARD"):
-        infernal_hard.start()
+    elif(selected_map == "INFERNAL_HARD"):
+        infernal.start()
 
 def Exit_Game():
 
@@ -56,8 +57,9 @@ def Exit_Game():
 
 sleep(5)
 
-pick_hero("QUINCY")
-# while True:
-#     Start_Select_Map("DARK_CASTLE")
-#     Main_Game()
-#     Exit_Game()
+#pyautogui.mouseInfo()
+
+#while True:
+Start_Select_Map("INFERNAL_HARD")
+Main_Game()
+Exit_Game()

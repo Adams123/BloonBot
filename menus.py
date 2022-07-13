@@ -2,11 +2,12 @@ from pyautogui import *
 import pyautogui
 from time import sleep
 from colorama import Fore
+from gameutils import pick_hero
 
 from mouseUtils import *
 from constants import *
 
-selected_map = "DARK_CASTLE"
+selected_map = "INFERNAL_HARD"
 
 def menu_check():
     while True:
@@ -18,21 +19,29 @@ def menu_check():
             print(f'{Fore.GREEN}Menu screen not found. Trying again...')
             sleep(2)
 
+def hero_check(map):
+    if(pyautogui.locateOnScreen("pictures\\heroes\\quincy_picked.png", confidence = CONFIDENCE) == None):
+        pick_hero(selected_map_config[map][2])
+
 def Start_Select_Map(map):
-    menu_check()
-    print(f'{Fore.CYAN}Selecting map...')
-    click("HOME_MENU_START")
-    click("EXPERT_SELECTION")
-    if(map == "DARK_CASTLE"):
-        click("RIGHT_ARROW_SELECTION")
     global selected_map
     selected_map = map
-    click(selected_map)
-    if(map == "DARK_CASTLE"): # TODO SEPARAR ESSAS PORRAS
-        click("EASY_MODE")
-    else:
-        pyautogui.click(1307,415)
+    menu_check()
+    hero_check(map)
+    print(f'{Fore.CYAN}Selecting map...')
+    click("HOME_MENU_START")
+    sleep(0.3)
+    click("EXPERT_SELECTION")
+    sleep(0.3)
+    if(map == "DARK_CASTLE"):
+        click("RIGHT_ARROW_SELECTION")
+
+    pyautogui.click(infernal_hard["MAP_LOCATION"]) #TODO generic
+    sleep(0.5)
+    pyautogui.click(1307,415)
+    sleep(0.5)
     click("STANDARD_GAME_MODE")
+    sleep(0.5)
     click("OVERWRITE_SAVE")
     print(f'{Fore.CYAN}Map selected.')
 
