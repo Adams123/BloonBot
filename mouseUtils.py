@@ -1,25 +1,30 @@
 from constants import *
+from gameutils import levelUpCheck
 
 import pydirectinput
 import pyautogui
 from time import sleep
 
-def click(location):
-    loc = button_positions[location]
-    pyautogui.moveTo(loc)
-    pyautogui.click(loc)
-    sleep(0.5)
+def dragTo(location, duration=0.2,shouldSleep=True):
+    pyautogui.dragTo(location, duration=duration)
+    if(shouldSleep):
+        sleep(0.1)
 
-#
+def click(location):
+    pyautogui.moveTo(location)
+    sleep(0.3)
+    levelUpCheck()
+    pyautogui.click()
+    sleep(0.2)
 
 def move_mouse(location):
     pyautogui.moveTo(location)
-    sleep(0.5)
-
+    sleep(0.2)
 
 def press_key(key):
+    levelUpCheck()
     pydirectinput.press(key)
-    sleep(0.5)
+    sleep(0.2)
 
 def scrollUp():
     subLoc = pyautogui.locateOnScreen("pictures\\monkeys\\SUBMARINE.png", confidence=CONFIDENCE)

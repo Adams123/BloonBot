@@ -5,44 +5,28 @@ from time import sleep
 import colorama
 from colorama import Fore
 
+import dark_castle_easy
+import infernal_hard as infernal
+
 from mouseUtils import *
 from constants import * 
-from gameutils import * 
+from gameutils import *
+from menus import selected_map
 
-from menus import Start_Select_Map
+
+from menus import Start_Select_Map, check_for_events
 
 colorama.init(autoreset=True)
 
 def Main_Game():
-
-    print(f'{Fore.CYAN}Game started.')
-
-    place_tower("HERO", "HERO_LOCATION")
-    
-    press_key("space")  # Start the game
-    press_key("space")  # Fast forward the game
-
-    place_tower("SUBMARINE", "SUBMARINE_LOCATION")
-    upgrade_tower(',', "SUBMARINE_LOCATION")
-    upgrade_tower('/', "SUBMARINE_LOCATION")
-    upgrade_tower('/', "SUBMARINE_LOCATION")
-    upgrade_tower(',', "SUBMARINE_LOCATION")
-    place_tower("NINJA", "NINJA_LOCATION")
-    upgrade_tower(',', "NINJA_LOCATION")
-    upgrade_tower(',', "NINJA_LOCATION")
-    upgrade_tower('/', "NINJA_LOCATION")
-    upgrade_tower(',', "NINJA_LOCATION")
-    upgrade_tower('/', "SUBMARINE_LOCATION")
-    upgrade_tower('/', "SUBMARINE_LOCATION")
-    upgrade_tower(',', "NINJA_LOCATION")
-    place_tower("BOOMERANG", "MORTAR_LOCATION_1")
-    place_tower("BOOMERANG", "MORTAR_LOCATION_2")
-    place_tower("BOOMERANG", "MORTAR_LOCATION_3")
-    place_tower("BOOMERANG", "MORTAR_LOCATION_4")
+    if(selected_map == "DARK_CASTLE"):
+        dark_castle_easy.start()
+    elif(selected_map == "INFERNAL_HARD"):
+        infernal.start()
 
 def Exit_Game():
 
-    Level_Up_Check(1)
+    levelUpCheck()
 
     found = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
 
@@ -52,12 +36,16 @@ def Exit_Game():
         found = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
 
     print(f'{Fore.CYAN}Game ended. Going back to homescreen...')
-    pyautogui.click(x=960, y=910)
     sleep(2)
-    pyautogui.click(x=790, y=850)
-    sleep(6)
+    back_btn = pyautogui.locateOnScreen(start_menu_path, grayscale = True, confidence = CONFIDENCE)
+    pyautogui.click(back_btn)
     print(f'{Fore.CYAN}Back in homescreen. Checking for event notification...')
     sleep(2)
+
+    reset_towers_levels()
+
+    check_for_events()
+
     for x in range(0, 4):  # checking for menu screen
         menu_on = pyautogui.locateOnScreen(menu_path, grayscale=True, confidence=CONFIDENCE)
         if menu_on != None:
@@ -67,10 +55,11 @@ def Exit_Game():
             click("EVENT_EXIT")
             sleep(3)
 
-#pyautogui.mouseInfo()
 sleep(5)
-while True:
-    Start_Select_Map()
-    Main_Game()
-    Exit_Game()
 
+#pyautogui.mouseInfo()
+
+#while True:
+Start_Select_Map("INFERNAL_HARD")
+Main_Game()
+Exit_Game()
