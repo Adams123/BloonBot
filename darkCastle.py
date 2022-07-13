@@ -40,7 +40,7 @@ class DarkCastle(Map):
         keepUpgrading(['/','/'], "SUBMARINE_1", self.locations["SUBMARINE_LOCATION"])
         upgrade_tower(',', "NINJA_1", self.locations["NINJA_LOCATION"])
 
-        levelup_tower("BOOMERANG", self.levelup_locations)
+        levelup_tower("DART", self.levelup_locations)
         
         
 
