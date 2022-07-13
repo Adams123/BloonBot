@@ -22,9 +22,9 @@ def place_tower(tower, location):
 
     while checkUntilMonkeyIsReady(tower) is False:
         print(f"Waiting for {tower} to be ready")
-        Level_Up_Check(1)
+        levelUpCheck()
 
-    Level_Up_Check(1)
+    levelUpCheck()
     print(f'{Fore.CYAN}Placing ' + tower + '...')
     click(location)
     print(f'{Fore.CYAN}' + tower + ' placed.')
@@ -34,11 +34,12 @@ def place_tower(tower, location):
 def levelup_tower(tower, locations):
     gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
     levelup = 0
-    locations
-    while gameEnded == None or levelup < len(locations):
-        Level_Up_Check(1)
+    while (gameEnded == None):
+        levelUpCheck()
+        if(levelup < len(locations)):
+            break
         if(checkUntilMonkeyIsReady(tower)):
-            Level_Up_Check(1)
+            levelUpCheck()
             print(f'{Fore.CYAN}Placing ' + tower + '...')
             move_mouse(locations[levelup])
             print(f'{Fore.CYAN}Clicking ' + monkeys[tower] + '...')
@@ -51,6 +52,7 @@ def levelup_tower(tower, locations):
     
     while gameEnded == None:
         print('Level not finished!')
+        levelUpCheck()
         gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
 
 def keepUpgrading(paths, towerName, location):
@@ -74,12 +76,14 @@ def upgrade_tower(path, towerName, location, singleUpgrade=True):
         click(location)
     while checkUntilUpgradeIsReady(path, towerName, towerUpgradeLevels[towerName][path]) is False:
         print(f"Waiting for {towerName} - path {keyPaths[path]} to be ready")
-        Level_Up_Check(1)
+        levelUpCheck()
 
     print(f'{Fore.CYAN}Upgrading tower path ' + path + '...')
+    levelUpCheck()
     press_key(path)
     sleep(0.2)
     if(singleUpgrade):
+        levelUpCheck()
         press_key("esc")
     print(f'{Fore.CYAN}Path ' + path + ' upgraded.')
     sleep(0.5)
@@ -124,44 +128,13 @@ def pick_hero(hero):
     sleep(0.5)
     findAndClick(return_button_path)
 
-def Level_Up_Check(seconds):
 
-    global overtime
-    overtime = 0
-
-    t_end = time() + seconds - 1
-
-    while time() < t_end:
-        found = pyautogui.locateOnScreen(level_up_path, grayscale=True, confidence=CONFIDENCE)
-
-        if found != None:
-            print(f'{Fore.RED}Level Up notification detected. Getting rid of it...')
-            click("LEFT_INSTA")  # Accept lvl
-            sleep(1)
-            click("LEFT_INSTA")  # Accept knoledge
-            sleep(1)
-            
-            click("LEFT_INSTA")  # unlock insta
-            sleep(1)
-            click("LEFT_INSTA")  # collect insta
-            sleep(1)
-
-            click("MID_INSTA")  # unlock insta
-            sleep(1)
-            click("MID_INSTA")  # collect insta
-            sleep(1)
-
-            click("RIGHT_INSTA")  # unlock r insta
-            sleep(1)
-            click("RIGHT_INSTA")  # collect r insta
-            sleep(2)
-            
-            #press_key("space")  # Start the game
-            print(f'{Fore.GREEN}Notification kyssed.')
-        else:
-            sleep(0.2)
-
-    overtime = time() - t_end
+def levelUpCheck():
+    found = pyautogui.locateOnScreen(level_up_path, grayscale=True, confidence=CONFIDENCE)
+    if(found):
+        click(found)
+        sleep(0.5)
+        click(found)
 
 
 def retarget_mortar(location):

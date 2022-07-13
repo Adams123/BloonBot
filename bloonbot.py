@@ -26,7 +26,7 @@ def Main_Game():
 
 def Exit_Game():
 
-    Level_Up_Check(1)
+    levelUpCheck()
 
     found = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
 

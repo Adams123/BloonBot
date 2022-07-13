@@ -4,7 +4,8 @@ import pathlib
 CONFIDENCE = 0.65
 overtime = 0
 
-level_up_path = "pictures\\levelup.png"
+level_up_path = "pictures\\events\\levelup\\levelup.png"
+monkey_knowledge_path = "pictures\\events\\levelup\\knowledge.png"
 victory_path = "pictures\\victory.png"
 defeat_path = "pictures\\defeat.png"
 menu_path = "pictures\\menu.png"

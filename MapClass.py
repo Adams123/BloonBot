@@ -152,11 +152,12 @@ class Map(ABC):
             sleep(3)
 
     def exit(self):
-        Level_Up_Check(1)
+        levelUpCheck()
         found = pyautogui.locateOnScreen(self.menu_paths["next"], grayscale=True, confidence=CONFIDENCE)
 
         while found == None:
             print('Next button not found.')
+            levelUpCheck()
             found = pyautogui.locateOnScreen(self.menu_paths["next"], grayscale=True, confidence=CONFIDENCE)
 
         print(f'{Fore.CYAN}Game ended. Going back to homescreen...')
