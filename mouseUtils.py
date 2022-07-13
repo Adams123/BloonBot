@@ -1,5 +1,5 @@
 from constants import *
-from gameutils import levelUpCheck
+import gameutils as gutils
 
 import pydirectinput
 import pyautogui
@@ -13,7 +13,7 @@ def dragTo(location, duration=0.2,shouldSleep=True):
 def click(location):
     pyautogui.moveTo(location)
     sleep(0.3)
-    levelUpCheck()
+    gutils.levelUpCheck()
     pyautogui.click()
     sleep(0.2)
 
@@ -22,7 +22,7 @@ def move_mouse(location):
     sleep(0.2)
 
 def press_key(key):
-    levelUpCheck()
+    gutils.levelUpCheck()
     pydirectinput.press(key)
     sleep(0.2)
 

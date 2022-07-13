@@ -3,7 +3,7 @@ import pyautogui
 from time import sleep, time
 from colorama import Fore
 
-from mouseUtils import *
+from mouseUtils import move_mouse,press_key,click
 from constants import *
 
 keyPaths = {
@@ -36,7 +36,7 @@ def levelup_tower(tower, locations):
     levelup = 0
     while (gameEnded == None):
         levelUpCheck()
-        if(levelup < len(locations)):
+        if(levelup > len(locations)):
             break
         if(checkUntilMonkeyIsReady(tower)):
             levelUpCheck()
