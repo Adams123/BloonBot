@@ -30,15 +30,17 @@ def place_tower(tower, location):
     print(f'{Fore.CYAN}' + tower + ' placed.')
     sleep(0.5)
 
-def levelup_tower(tower):
+## ADD +13
+def levelup_tower(tower, locations):
     gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
     levelup = 0
-    while gameEnded == None:
+    locations
+    while gameEnded == None or levelup < len(locations):
         Level_Up_Check(1)
         if(checkUntilMonkeyIsReady(tower)):
             Level_Up_Check(1)
             print(f'{Fore.CYAN}Placing ' + tower + '...')
-            move_mouse(levelup_locations[levelup])
+            move_mouse(locations[levelup])
             print(f'{Fore.CYAN}Clicking ' + monkeys[tower] + '...')
             pyautogui.click()
             print(f'{Fore.CYAN}' + tower + ' placed.')
@@ -46,11 +48,17 @@ def levelup_tower(tower):
             levelup=levelup+1
         print('Level not finished!')
         gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
+    
+    while gameEnded == None:
+        print('Level not finished!')
+        gameEnded = pyautogui.locateOnScreen(next_path, grayscale=True, confidence=CONFIDENCE)
 
 def keepUpgrading(paths, towerName, location):
     click(location)
     for path in paths:
         upgrade_tower(path, towerName, location, singleUpgrade=False)
+    press_key("esc")
+    sleep(0.3)
 
 def upgrade_tower(path, towerName, location, singleUpgrade=True):
     if(towerName in towerUpgradeLevels):

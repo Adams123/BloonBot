@@ -41,10 +41,12 @@ class DarkCastle(Map):
         keepUpgrading(['/','/'], "SUBMARINE_1", self.locations["SUBMARINE_LOCATION"])
         upgrade_tower(',', "NINJA_1", self.locations["NINJA_LOCATION"])
 
-        levelup_tower("BOOMERANG")
+        levelup_tower("BOOMERANG", self.levelup_locations)
         
         
 
 darkCastle = DarkCastle()
 sleep(3)
-darkCastle.start()
+x = 0
+while( x < 10):
+    darkCastle.start()
