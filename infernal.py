@@ -10,6 +10,7 @@ class Infernal(Map):
     locations = {
         "MAP_LOCATION": [549, 557],
 
+        "DART_LOCATION": [444,273],
         "HERO_LOCATION" : [838,383],
         "NINJA_LOCATION": [836,695],
         "SUBMARINE_LOCATION_1": [1155,218],
@@ -30,14 +31,17 @@ class Infernal(Map):
 
     def startGame(self): # actual game script
         place_tower("HERO", self.locations["HERO_LOCATION"])
+
+        place_tower("DART", self.locations["DART_LOCATION"])
+        upgrade_tower('/', "DART_1", self.locations["DART_LOCATION"])
     
         press_key("space")  # Start the game
         press_key("space")  # Fast forward the game
 
-        place_tower("NINJA", "NINJA_LOCATION")
+        place_tower("NINJA", self.locations["NINJA_LOCATION"])
         keepUpgrading([',','/',',',','], "NINJA_1", self.locations["NINJA_LOCATION"])
 
-        place_tower("SUBMARINE", "SUBMARINE_LOCATION_1")
+        place_tower("SUBMARINE", self.locations["SUBMARINE_LOCATION_1"])
         keepUpgrading([",",",",".","."], "SUBMARINE_1", self.locations["SUBMARINE_LOCATION_1"])
         
         place_tower("SUBMARINE", self.locations["SUBMARINE_LOCATION_2"])
@@ -54,12 +58,12 @@ class Infernal(Map):
         place_tower("VILLAGE", self.locations["VILLAGE_LOCATION"])
         keepUpgrading(['.','.','/','/'], "VILLAGE_1", self.locations["VILLAGE_LOCATION"])
         
-        sell_tower("ALCHEMIST_LOCATION")
+        sell_tower(self.locations["ALCHEMIST_LOCATION"])
         upgrade_tower('/', "ACE_1", self.locations["ACE_LOCATION"])
         place_tower("ALCHEMIST", self.locations["ALCHEMIST_LOCATION"])
         keepUpgrading([',',',',',','.','.',','], "ALCHEMIST_2", self.locations["ALCHEMIST_LOCATION"])
 
-        place_tower("BUCCANEER","BUCCANEER_LOCATION")
+        place_tower("BUCCANEER",self.locations["BUCCANEER_LOCATION"])
         keepUpgrading([',',',','.','.',',',','], "BUCCANEER_1",self.locations["BUCCANEER_LOCATION"])
         
         place_tower("SUBMARINE", self.locations["SUBMARINE_LOCATION_3"])
@@ -76,4 +80,4 @@ class Infernal(Map):
 
 infernal = Infernal()
 sleep(3)
-Infernal.startGame()
+infernal.startGame()

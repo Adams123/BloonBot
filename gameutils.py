@@ -36,9 +36,7 @@ def levelup_tower(tower, locations):
     levelup = 0
     while (gameEnded == None):
         levelUpCheck()
-        if(levelup > len(locations)):
-            break
-        if(checkUntilMonkeyIsReady(tower)):
+        if(checkUntilMonkeyIsReady(tower) and levelup < len(locations)):
             levelUpCheck()
             print(f'{Fore.CYAN}Placing ' + tower + '...')
             move_mouse(locations[levelup])
@@ -132,9 +130,12 @@ def pick_hero(hero):
 def levelUpCheck():
     found = pyautogui.locateOnScreen(level_up_path, grayscale=True, confidence=CONFIDENCE)
     if(found):
-        click(found)
+        pyautogui.moveTo(found)
+        sleep(0.3)
+        pyautogui.click()
         sleep(0.5)
-        click(found)
+        pyautogui.click()
+        sleep(0.3)
 
 
 def retarget_mortar(location):

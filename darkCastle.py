@@ -16,7 +16,8 @@ class DarkCastle(Map):
         "NINJA_LOCATION": [553, 633]
     }
 
-    levelup_locations = [[570,483]]
+    levelup_locations = [[570,483],[496,467],[541,411],[465,397],[524,339],[410,351],
+[504,274],[430,246],[412,106],[495,103],[572,128],[628,174]]
 
 
     def pickMap(self): # on map selection, pick the map

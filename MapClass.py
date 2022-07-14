@@ -129,7 +129,7 @@ class Map(ABC):
         findAndClick(self.difficulty)
         sleep(0.5)
         findAndClick(self.menu_paths["standard"])
-        sleep(0.5)
+        sleep(3)
         isOverwrite = pyautogui.locateOnScreen(self.menu_paths["overwrite"])
         if(isOverwrite!=None):
             click(isOverwrite)
