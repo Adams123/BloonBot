@@ -10,6 +10,7 @@ class DarkCastle(Map):
     locations = {
         "MAP_LOCATION": [960, 260],
         
+        "DART_LOCATION":[500,257],
         "HERO_LOCATION": [712, 431],
         "BOMBER_TARGET": [698,555],
         "SUBMARINE_LOCATION": [1090, 431],
@@ -28,6 +29,7 @@ class DarkCastle(Map):
 
     def startGame(self):
         place_tower("HERO", self.locations["HERO_LOCATION"])
+        place_tower("DART", self.locations["DART_LOCATION"])
         
         press_key("space")
         press_key("space")
@@ -44,9 +46,10 @@ class DarkCastle(Map):
         levelup_tower("DART", self.levelup_locations)
         
         
-
 darkCastle = DarkCastle()
-sleep(3)
 x = 0
-while( x < 10 ):
+print("Jogos terminados: " + str(x))
+while(True):
     darkCastle.start()
+    x+=1
+    print("Jogos terminados: " + str(x))

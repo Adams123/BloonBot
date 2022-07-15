@@ -79,5 +79,9 @@ class Infernal(Map):
         
 
 infernal = Infernal()
-sleep(3)
-infernal.startGame()
+x = 0
+print("Jogos terminados: " + str(x))
+while(True):
+    infernal.start()
+    x+=1
+    print("Jogos terminados: " + str(x))

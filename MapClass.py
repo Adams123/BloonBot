@@ -154,9 +154,10 @@ class Map(ABC):
     def exit(self):
         levelUpCheck()
         found = pyautogui.locateOnScreen(self.menu_paths["next"], grayscale=True, confidence=CONFIDENCE)
-
-        while found == None:
+        if found == None:
             print('Next button not found.')
+        while found == None:
+            
             levelUpCheck()
             found = pyautogui.locateOnScreen(self.menu_paths["next"], grayscale=True, confidence=CONFIDENCE)
 
@@ -199,6 +200,7 @@ class Map(ABC):
 
 
     def start(self):
+        sleep(3)
         self.checkIfHeroIsSelected()
         self.selectMap()
         self.startGame()
