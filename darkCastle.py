@@ -17,8 +17,7 @@ class DarkCastle(Map):
         "NINJA_LOCATION": [553, 633]
     }
 
-    levelup_locations = [[570,483],[496,467],[541,411],[465,397],[524,339],[410,351],
-[504,274],[430,246],[412,106],[495,103],[572,128],[628,174]]
+    levelup_locations = [[570,483],[496,467],[541,411],[465,397],[524,339],[410,351],[430,246],[412,106],[495,103],[572,128],[628,174]]
 
 
     def pickMap(self): # on map selection, pick the map
@@ -43,12 +42,12 @@ class DarkCastle(Map):
         keepUpgrading(['/','/'], "SUBMARINE_1", self.locations["SUBMARINE_LOCATION"])
         upgrade_tower(',', "NINJA_1", self.locations["NINJA_LOCATION"])
 
-        levelup_tower("DART", self.levelup_locations)
+        # for loc in self.levelup_locations:
+        #     place_tower("DART", loc)
         
         
 darkCastle = DarkCastle()
 x = 0
-print("Jogos terminados: " + str(x))
 while(True):
     darkCastle.start()
     x+=1

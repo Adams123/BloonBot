@@ -24,6 +24,8 @@ class Infernal(Map):
         "SNIPER_LOCATION": [1605,697]
     }
 
+    round59Path = "pictures\\inferno\\round59.png"
+
 
     def pickMap(self): # on map selection, pick the map
         click(self.locations["MAP_LOCATION"])
@@ -57,6 +59,8 @@ class Infernal(Map):
         
         place_tower("VILLAGE", self.locations["VILLAGE_LOCATION"])
         keepUpgrading(['.','.','/','/'], "VILLAGE_1", self.locations["VILLAGE_LOCATION"])
+
+        sleep(100)
         
         sell_tower(self.locations["ALCHEMIST_LOCATION"])
         upgrade_tower('/', "ACE_1", self.locations["ACE_LOCATION"])
@@ -76,7 +80,6 @@ class Infernal(Map):
 
         place_tower("SNIPER", self.locations["SNIPER_LOCATION"])
         keepUpgrading([",",",",",","/","/"], "SNIPER_1", self.locations["SNIPER_LOCATION"])
-        
 
 infernal = Infernal()
 x = 0

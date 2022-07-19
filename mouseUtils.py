@@ -13,7 +13,7 @@ def dragTo(location, duration=0.2,shouldSleep=True):
 def click(location):
     pyautogui.moveTo(location)
     sleep(0.3)
-    gutils.levelUpCheck()
+    gutils.levelUpCheck(location)
     pyautogui.click()
     sleep(0.2)
 

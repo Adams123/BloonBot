@@ -22,9 +22,9 @@ def place_tower(tower, location):
 
     print(f"Waiting for {tower} to be ready")
     while checkUntilMonkeyIsReady(tower) is False:    
-        levelUpCheck()
+        levelUpCheck(location)
 
-    levelUpCheck()
+    levelUpCheck(location)
     print(f'{Fore.CYAN}Placing ' + tower + '...')
     click(location)
     print(f'{Fore.CYAN}' + tower + ' placed.')
@@ -61,6 +61,12 @@ def keepUpgrading(paths, towerName, location):
     press_key("esc")
     sleep(0.3)
 
+def waitUntilImageIsFound(image):
+    found = pyautogui.locateOnScreen(image, grayscale=True, confidence=CONFIDENCE)
+    while(found == None):
+        levelUpCheck()
+        found = pyautogui.locateOnScreen(image, grayscale=True, confidence=CONFIDENCE)
+
 def upgrade_tower(path, towerName, location, singleUpgrade=True):
     if(towerName in towerUpgradeLevels):
         if(path in towerUpgradeLevels[towerName]):
@@ -75,14 +81,14 @@ def upgrade_tower(path, towerName, location, singleUpgrade=True):
         click(location)
     print(f"Waiting for {towerName} - path {keyPaths[path]} to be ready")
     while checkUntilUpgradeIsReady(path, towerName, towerUpgradeLevels[towerName][path]) is False:
-        levelUpCheck()
+        levelUpCheck(location)
 
     print(f'{Fore.CYAN}Upgrading tower path ' + path + '...')
-    levelUpCheck()
+    levelUpCheck(location)
     press_key(path)
     sleep(0.2)
     if(singleUpgrade):
-        levelUpCheck()
+        levelUpCheck(location)
         press_key("esc")
     print(f'{Fore.CYAN}Path ' + path + ' upgraded.')
     sleep(0.5)
@@ -127,8 +133,7 @@ def pick_hero(hero):
     sleep(0.5)
     findAndClick(return_button_path)
 
-
-def levelUpCheck():
+def levelUpCheck(lastLocation=None):
     found = pyautogui.locateOnScreen(level_up_path, grayscale=True, confidence=CONFIDENCE)
     if(found):
         pyautogui.moveTo(found)
@@ -137,6 +142,11 @@ def levelUpCheck():
         sleep(0.5)
         pyautogui.click()
         sleep(0.3)
+        if(lastLocation!=None):
+            pyautogui.moveTo(lastLocation)
+            sleep(0.3)
+            pyautogui.click()
+            sleep(0.3)
 
 
 def retarget_mortar(location):
